@@ -4,6 +4,7 @@ const styles: { [key: string]: SystemStyleObject } = {
   container: {
     width: "100%",
     gap: "16px",
+    marginBottom: "16px",
   },
 
   button: {
