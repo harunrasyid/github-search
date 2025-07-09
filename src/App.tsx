@@ -21,26 +21,36 @@ function App() {
   return (
     <VStack sx={styles.page}>
       {/* Search */}
-      <Stack sx={styles.search}>
-        {/* Input */}
-        <Input
-          type={"search"}
-          placeholder="Enter username"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-        />
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSearch(query);
+        }}
+        style={{
+          width: "100%",
+        }}
+      >
+        <Stack sx={styles.search}>
+          {/* Input */}
+          <Input
+            type={"search"}
+            placeholder="Enter username"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+          />
 
-        {/* Button */}
-        <Button
-          colorScheme="blue"
-          onClick={() => handleSearch(query)}
-          isLoading={loadingUsers}
-          disabled={isEmptyString(query)}
-          sx={styles.button}
-        >
-          Search
-        </Button>
-      </Stack>
+          {/* Button */}
+          <Button
+            colorScheme="blue"
+            onClick={() => handleSearch(query)}
+            isLoading={loadingUsers}
+            disabled={isEmptyString(query)}
+            sx={styles.button}
+          >
+            Search
+          </Button>
+        </Stack>
+      </form>
 
       {/* Information */}
       {!isEmptyString(query) ? (
