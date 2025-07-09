@@ -3,6 +3,17 @@ import { ChevronDownIcon, ChevronUpIcon } from "@chakra-ui/icons";
 import type { IUserCardProps } from "./UserCard.props";
 import { styles } from "./UserCard.style";
 
+/**
+ * UserCard component displays a user's name in a collapsible card format.
+ * The card header is clickable and toggles the visibility of its children content.
+ *
+ * @component
+ * @param {IUserCardProps} props - The props for the UserCard component.
+ * @param {string} props.name - Github username.
+ * @param {boolean} [props.isOpen=false] - Whether the collapsible content is open.
+ * @param {() => void} props.onClick - Callback fired when the header is clicked.
+ * @param {React.ReactNode} props.children - Content to display inside the collapsible section.
+ */
 export const UserCard = ({
   name,
   isOpen = false,

@@ -23,7 +23,9 @@ export function useHome() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   const handleSearch = async (query: string) => {
+    // If query are empty string do nothing
     if (!query) return;
+
     setLoadingUsers(true);
     setUsers([]);
     setSelectedUser(undefined);
@@ -50,10 +52,11 @@ export function useHome() {
 
   const handleSelectUser = async (user: IUser) => {
     if (user.id === selectedUser?.id) {
-      // Same user
+      // Same user, no user changes
       setIsOpen(!isOpen);
     } else {
       // New selected user
+      // Only fetch repo when selected user are changed
       setIsOpen(true);
       setSelectedUser(user);
       setLoadingRepos(true);
